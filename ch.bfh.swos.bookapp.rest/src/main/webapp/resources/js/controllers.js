@@ -32,7 +32,7 @@ function BookController($scope, Book, Author) {
 
     $scope.remove = function (index, id) {
 		$scope.books.splice(index, 1);
-		Book.remove({'id':id});
+		Book.remove({bookId:id});
     };
 }
 
@@ -68,7 +68,7 @@ function AuthorController($scope, Author) {
 
     $scope.remove = function (index, id) {
 		$scope.authors.splice(index, 1);
-		Author.remove({'id':id});
+		Author.remove({authorId:id});
     };
 }
 
