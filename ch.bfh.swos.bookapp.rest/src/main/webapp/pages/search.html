@@ -1,0 +1,34 @@
+<div ng-controller="SearchController">
+    <form id="form" name="form" class="form-search">
+    	<fieldset>
+        	<legend>Search Book</legend>
+        	<div class="input-append">
+        		<input id="term" type="text" ng-model="term" placeholder="Enter a fulltext search term..." class="search-query"/>
+        		<button id="search" ng-click="search()" class="btn btn-primary" style="height: 30px !important;"><i class="icon-search icon-white"></i></button>        		        		
+        	</div>
+        </fieldset>
+    </form>
+
+    <form id="list">        
+        <fieldset>
+        	<legend>Found Books</legend>
+	        <div style="text-align: right">Hits: {{results.hits.total}}</div>
+	        <table id="table" class="table table-striped table-bordered table-condensed">
+	            <thead>
+	            <tr>
+	                <th>Titel</th>
+	                <th>Release Date</th>
+	                <th>Author</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+	            <tr ng-repeat="book in results.hits.hits.map(getBook)">
+	                <td>{{book.title}}</td>
+	                <td>{{book.releaseDate | date:'dd.MM.yyyy'}}</td>
+	                <td>{{book.author.firstname }} {{book.author.lastname}}</td>
+	            </tr>
+	            </tbody>
+	        </table>
+        </fieldset>
+    </form>
+</div>

@@ -1,6 +1,6 @@
 'use strict';
 
-var controllers = angular.module('controllers', ['services']);
+var controllers = angular.module('controllers', ['services','elasticjs.service']);
 
 function BookController($scope, Book, Author) {
     $scope.currentBook = new Book();
@@ -69,6 +69,24 @@ function AuthorController($scope, Author) {
     $scope.remove = function (index, id) {
 		$scope.authors.splice(index, 1);
 		Author.remove({authorId:id});
+    };
+}
+
+function SearchController($scope, ejsResource) {
+    var ejs = ejsResource('http://localhost:9200');
+    var oQuery = ejs.QueryStringQuery();
+    var client = ejs.Request()
+    	.indices('bookapp')
+    	.types('book');
+
+    $scope.search = function () {
+    	$scope.results = client
+        	.query(oQuery.query($scope.term || '*'))
+        	.doSearch();
+    };
+    
+    $scope.getBook = function(doc) {
+    	return doc._source;
     };
 }
 

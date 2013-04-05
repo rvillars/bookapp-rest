@@ -8,10 +8,13 @@ import javax.inject.Named;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import ch.bfh.swos.bookapp.model.Book;
 import ch.bfh.swos.bookapp.repository.BookRepository;
 import ch.bfh.swos.bookapp.service.BookService;
+import ch.bfh.swos.bookapp.service.IndexService;
 import ch.bfh.swos.bookapp.service.dto.BookDTO;
 
 @Named
@@ -19,12 +22,18 @@ public class DefaultBookService implements BookService {
 
 	@Inject
 	private BookRepository bookRepository;
+	
+	@Inject
+	private IndexService<Book> bookIndexService;
+	
+	private static final String BOOK_TYPE = "book";
 
 	private final ModelMapper mapper = new ModelMapper();
 
 	public BookDTO create(BookDTO bookDto) {
 		Book book = mapper.map(bookDto, Book.class);
 		Book persistedBook = bookRepository.create(book);
+		bookIndexService.index(persistedBook, BOOK_TYPE, persistedBook.getId());
 		return mapper.map(persistedBook, BookDTO.class);
 	}
 
@@ -43,11 +52,13 @@ public class DefaultBookService implements BookService {
 	public BookDTO update(BookDTO bookDto) {
 		Book book = mapper.map(bookDto, Book.class);
 		Book updatedBook = bookRepository.update(book);
+		bookIndexService.index(updatedBook, BOOK_TYPE, updatedBook.getId());
 		return mapper.map(updatedBook, BookDTO.class);
 	}
 
 	public void delete(BookDTO bookDto) {
 		Book book = bookRepository.read(bookDto.getId());
+		bookIndexService.delete(BOOK_TYPE, book.getId());
 		bookRepository.delete(book);
 	}
 

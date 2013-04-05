@@ -13,18 +13,17 @@
     <script type="text/javascript" src="http://code.angularjs.org/1.0.1/angular-resource-1.0.1.min.js"></script>
     <script type="text/javascript" src="resources/js/angular-ui.min.js"></script>
     <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/elastic.min.js"></script>
+    <script type="text/javascript" src="resources/js/elastic-angular-client.min.js"></script>
     
     <script type="text/javascript" src="resources/js/application.js"></script>
     <script type="text/javascript" src="resources/js/controllers.js"></script>
     <script type="text/javascript" src="resources/js/services.js"></script>
     <script type="text/javascript" src="resources/js/directives.js"></script>
 
-    <link rel="stylesheet" type="text/css"
-          href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css">
-    <link rel="stylesheet" type="text/css"
-          href="resources/css/angular-ui.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/angular-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -40,6 +39,7 @@
            		<ul class="nav">
              		<li ng-class="{active: route.current.activeMenu == 'books'}"><a href="#books">Books</a></li>
              		<li ng-class="{active: route.current.activeMenu == 'authors'}"><a href="#authors">Authors</a></li>
+             		<li ng-class="{active: route.current.activeMenu == 'search'}"><a href="#search">Search</a></li>
            		</ul>
          	</div><!--/.nav-collapse -->
      	</div>
