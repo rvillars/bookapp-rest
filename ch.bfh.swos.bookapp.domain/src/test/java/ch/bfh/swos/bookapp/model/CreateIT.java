@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-public class CreateTest {
+public class CreateIT {
 
 	@Test
 	public void test() {
@@ -18,11 +18,11 @@ public class CreateTest {
 		author.setLastname("Tolkien");
 
 		Book book = new Book();
-		book.setTitle("Der Herr der Ringe - Die Gefährten");
+		book.setTitle("Der Herr der Ringe - Die Gefaehrten");
 		book.setReleaseDate(new Date());
 
 		Book book2 = new Book();
-		book2.setTitle("Der Herr der Ringe - Die zwei Türme");
+		book2.setTitle("Der Herr der Ringe - Die zwei Tuerme");
 		book2.setReleaseDate(new Date());
 
 		Set<Book> books = new HashSet<Book>();

@@ -3,6 +3,7 @@
  */
 package ch.bfh.swos.bookapp.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -16,7 +17,7 @@ import org.junit.Test;
  * @author rovi
  * 
  */
-public class UpdateTest {
+public class ReadIT {
 
 	@Test
 	public void test() {
@@ -28,15 +29,11 @@ public class UpdateTest {
 		@SuppressWarnings("unchecked")
 		List<Author> foundAuthors = q.getResultList();
 		Author firstAuthor = foundAuthors.get(0);
+		Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
 
-		// Write access needs a transaction
-		em.getTransaction().begin();
-		firstAuthor.setLastname("OtherName");
-		em.getTransaction().commit();
-		// Entity is persisted automatically after commit because it is managed
-		// by jpa.
-
-		Assert.assertTrue(firstAuthor.getLastname().equals("OtherName"));
+		List<Book> foundBooks = new ArrayList<Book>(firstAuthor.getBooks());
+		Book firstBook = foundBooks.get(0);
+		Assert.assertTrue(firstBook.getTitle().startsWith("Der Herr der Ringe"));
 	}
 
 }

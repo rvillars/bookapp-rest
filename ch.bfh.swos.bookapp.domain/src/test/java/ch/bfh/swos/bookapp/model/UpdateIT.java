@@ -9,13 +9,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * @author rovi
  * 
  */
-public class DeleteTest {
+public class UpdateIT {
 
 	@Test
 	public void test() {
@@ -27,12 +28,15 @@ public class DeleteTest {
 		@SuppressWarnings("unchecked")
 		List<Author> foundAuthors = q.getResultList();
 		Author firstAuthor = foundAuthors.get(0);
-		// Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
 
 		// Write access needs a transaction
 		em.getTransaction().begin();
-		em.remove(firstAuthor);
+		firstAuthor.setLastname("OtherName");
 		em.getTransaction().commit();
+		// Entity is persisted automatically after commit because it is managed
+		// by jpa.
+
+		Assert.assertTrue(firstAuthor.getLastname().equals("OtherName"));
 	}
 
 }

@@ -13,7 +13,7 @@ import ch.bfh.swos.bookapp.repository.BookRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("/serviceContext.xml")
-public class PersistenceServiceTest {
+public class PersistenceServiceIT {
 
 	@Inject
 	private BookRepository bookDao;

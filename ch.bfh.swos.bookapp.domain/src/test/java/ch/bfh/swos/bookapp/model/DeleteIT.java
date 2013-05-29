@@ -3,21 +3,19 @@
  */
 package ch.bfh.swos.bookapp.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * @author rovi
  * 
  */
-public class ReadTest {
+public class DeleteIT {
 
 	@Test
 	public void test() {
@@ -29,11 +27,12 @@ public class ReadTest {
 		@SuppressWarnings("unchecked")
 		List<Author> foundAuthors = q.getResultList();
 		Author firstAuthor = foundAuthors.get(0);
-		Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
+		// Assert.assertTrue(firstAuthor.getLastname().equals("Tolkien"));
 
-		List<Book> foundBooks = new ArrayList<Book>(firstAuthor.getBooks());
-		Book firstBook = foundBooks.get(0);
-		Assert.assertTrue(firstBook.getTitle().startsWith("Der Herr der Ringe"));
+		// Write access needs a transaction
+		em.getTransaction().begin();
+		em.remove(firstAuthor);
+		em.getTransaction().commit();
 	}
 
 }
