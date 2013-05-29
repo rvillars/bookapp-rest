@@ -4,8 +4,8 @@
 		<class>ch.bfh.swos.bookapp.model.Author</class>
 		<class>ch.bfh.swos.bookapp.model.Book</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bfh"/>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:~/bookappDB"/>
 			<property name="javax.persistence.jdbc.user" value="bfh"/>
 			<property name="javax.persistence.jdbc.password" value="bfh"/>
 			<property name="eclipselink.ddl-generation" value="create-tables"/>
