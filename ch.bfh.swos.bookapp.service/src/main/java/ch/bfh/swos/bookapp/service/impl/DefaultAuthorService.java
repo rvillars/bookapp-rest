@@ -41,7 +41,9 @@ public class DefaultAuthorService implements AuthorService {
 	}
 
 	public AuthorDTO update(AuthorDTO authorDto) {
-		return new AuthorDTO();
+		Author author = mapper.map(authorDto, Author.class);
+		Author updatedAuthor = authorRepository.update(author);
+		return mapper.map(updatedAuthor, AuthorDTO.class);
 	}
 
 	public void delete(AuthorDTO authorDto) {
