@@ -16,16 +16,30 @@ import ch.bfh.swos.bookapp.repository.BookRepository;
 public class PersistenceServiceIT {
 
 	@Inject
-	private BookRepository bookDao;
+	private BookRepository bookRepository;
 
 	@Test
 	public void test() {
-		Book book = new Book();
-		book.setTitle("Test");
-		Book managedBook = bookDao.update(book);
-		Book foundBook = bookDao.read(managedBook.getId());
-		Assert.assertTrue(book.getTitle().equals(foundBook.getTitle()));
-		bookDao.delete(foundBook);
+
+		// Create
+		Book newBook = new Book();
+		newBook.setTitle("Test");
+		bookRepository.create(newBook);
+
+		// Read
+		Book readBook = bookRepository.read(newBook.getId());
+		Assert.assertTrue(newBook.getTitle().equals(readBook.getTitle()));
+
+		// Update
+		readBook.setTitle("Test2");
+		readBook = bookRepository.update(readBook);
+		Book updatedBook = bookRepository.read(readBook.getId());
+		Assert.assertTrue(readBook.getTitle().equals(updatedBook.getTitle()));
+
+		// Delete
+		bookRepository.delete(updatedBook);
+		Book deletedBook = bookRepository.read(readBook.getId());
+		Assert.assertNull(deletedBook);
 	}
 
 }

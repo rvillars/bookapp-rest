@@ -22,7 +22,7 @@ public class UpdateIT {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.model").createEntityManager();
+				"ch.bfh.swos.bookapp.domain").createEntityManager();
 
 		Query q = em.createQuery("select a from Author a");
 		@SuppressWarnings("unchecked")
@@ -36,7 +36,10 @@ public class UpdateIT {
 		// Entity is persisted automatically after commit because it is managed
 		// by jpa.
 
-		Assert.assertTrue(firstAuthor.getLastname().equals("OtherName"));
+		@SuppressWarnings("unchecked")
+		List<Author> updatedAuthors = q.getResultList();
+		Author updatedAuthor = updatedAuthors.get(0);
+		Assert.assertTrue(updatedAuthor.getLastname().equals("OtherName"));
 	}
 
 }

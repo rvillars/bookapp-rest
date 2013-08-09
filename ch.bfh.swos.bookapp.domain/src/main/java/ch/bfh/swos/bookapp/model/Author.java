@@ -1,7 +1,5 @@
 package ch.bfh.swos.bookapp.model;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.io.Serializable;
 import java.util.Set;
 
@@ -9,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REMOVE;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
  * Entity implementation class for Entity: Author
@@ -24,7 +27,7 @@ public class Author implements Serializable {
 	private String lastname;
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(mappedBy = "author")
+	@OneToMany(mappedBy = "author", cascade = { PERSIST, REMOVE })
 	private Set<Book> books;
 
 	public Author() {

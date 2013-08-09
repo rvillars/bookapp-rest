@@ -33,7 +33,7 @@ public class CreateIT {
 		book2.setAuthor(author);
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.model").createEntityManager();
+				"ch.bfh.swos.bookapp.domain").createEntityManager();
 
 		em.getTransaction().begin();
 		em.persist(author);

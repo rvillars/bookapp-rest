@@ -23,7 +23,7 @@ public class ReadIT {
 	public void test() {
 
 		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.model").createEntityManager();
+				"ch.bfh.swos.bookapp.domain").createEntityManager();
 
 		Query q = em.createQuery("select a from Author a");
 		@SuppressWarnings("unchecked")
