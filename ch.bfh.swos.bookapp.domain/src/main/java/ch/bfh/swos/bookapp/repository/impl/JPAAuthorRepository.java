@@ -44,6 +44,7 @@ public class JPAAuthorRepository implements AuthorRepository {
 	@Override
 	@Transactional
 	public void delete(Author author) {
+		author = em.merge(author);
 		em.remove(author);
 	}
 
