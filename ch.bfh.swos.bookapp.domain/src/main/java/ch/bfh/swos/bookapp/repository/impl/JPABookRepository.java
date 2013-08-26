@@ -44,6 +44,8 @@ public class JPABookRepository implements BookRepository {
 	@Override
 	@Transactional
 	public void delete(Book book) {
+		//merge needed because of new transaction 
+		book = em.merge(book);
 		em.remove(book);
 	}
 
