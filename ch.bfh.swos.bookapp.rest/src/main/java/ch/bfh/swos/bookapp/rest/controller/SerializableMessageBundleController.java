@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 @Controller
 @RequestMapping("/messageBundle")
-public class MessageBundleController {
+public class SerializableMessageBundleController {
 
     @Inject
     SerializableResourceBundleMessageSource messageBundle;
