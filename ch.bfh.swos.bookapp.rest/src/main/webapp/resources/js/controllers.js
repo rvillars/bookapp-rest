@@ -71,6 +71,15 @@ controllers.controller('NavController', ['$scope', '$rootScope', '$route', funct
 	$rootScope.route = $route;
 }]);
 
+controllers.controller('LanguageController', ['$scope','$translate','$location', function($scope, $translate, $location) {
+    $scope.changeLanguage = function (locale) {
+        $translate.uses(locale);
+        $location.search('lang', locale);
+        //window.location.href = $location.absUrl();
+        //window.location.reload();
+    };
+}]);
+
 function filterById(array, id) {
     return array.filter(function (object) {
         return object.id == id;

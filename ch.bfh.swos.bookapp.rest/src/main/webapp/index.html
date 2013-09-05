@@ -11,6 +11,9 @@
     <script type="text/javascript" src="resources/js/lib/angular-resource.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/angular-ui.min.js"></script>
     <script type="text/javascript" src="resources/js/lib/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="resources/js/lib/angular-translate.min.js"></script>
+    <script type="text/javascript" src="resources/js/lib/angular-translate-loader-url.min.js"></script>
     
     <script type="text/javascript" src="resources/js/application.js"></script>
     <script type="text/javascript" src="resources/js/controllers.js"></script>
@@ -36,6 +39,10 @@
              		<li ng-class="{active: route.current.activeMenu == 'books'}"><a href="#books">Books</a></li>
              		<li ng-class="{active: route.current.activeMenu == 'authors'}"><a href="#authors">Authors</a></li>
            		</ul>
+                <ul class="nav pull-right" ng-controller="LanguageController">
+                    <li><a href="" ng-click="changeLanguage('en')">EN</a>
+                    <li><a href="" ng-click="changeLanguage('de')">DE</a>
+                </ul>
          	</div><!--/.nav-collapse -->
      	</div>
    	</div>

@@ -13,3 +13,12 @@ services.factory('Author', ['$resource', function ($resource) {
         'update': {method: 'PUT'}
     });
 }]);
+
+services.factory('UrlLanguageStorage', ['$location', function($location) {
+    return {
+        set: function (name, value) {},
+        get: function (name) {
+            return $location.search()['lang']
+        }
+    };
+}]);

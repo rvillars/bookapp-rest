@@ -13,5 +13,21 @@
 
     <context:component-scan base-package="ch.bfh.swos.bookapp.rest.controller"/>
     <mvc:annotation-driven/>
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang"/>
+        </bean>
+    </mvc:interceptors>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+        <property name="defaultLocale" value="en" />
+    </bean>
+
+    <bean id="messageSource" class="ch.bfh.swos.bookapp.rest.common.SerializableResourceBundleMessageSource">
+        <property name="basename">
+            <value>classpath:/messages</value>
+        </property>
+    </bean>
     
 </beans>
