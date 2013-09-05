@@ -12,3 +12,5 @@ Technologies used:
 * AngularJS
 * jQueryUI
 * Angular-Translate
+
+See also Gist: https://gist.github.com/rvillars/6422287
