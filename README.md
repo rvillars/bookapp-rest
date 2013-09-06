@@ -1,5 +1,5 @@
-Angular-translate with Spring message bundles
-=============================================
+angular-translate with Spring bundles
+=====================================
 Spring Bundle based translations (i18n) for AngularJS applications with angular-translate based on the bookapp-rest code.
 
 Technologies used:
@@ -11,6 +11,6 @@ Technologies used:
 * SpringMVC
 * AngularJS
 * jQueryUI
-* Angular-Translate
+* angular-translate
 
 See also Gist: https://gist.github.com/rvillars/6422287
