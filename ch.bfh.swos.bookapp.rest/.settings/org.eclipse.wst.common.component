@@ -1,15 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project-modules id="moduleCoreId" project-version="1.5.0">
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="ch.bfh.swos.bookapp.rest">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
-        <dependent-module archiveName="ch.bfh.swos.bookapp.service.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ch.bfh.swos.bookapp.service/ch.bfh.swos.bookapp.service">
+        <dependent-module archiveName="ch.bfh.swos.bookapp.service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ch.bfh.swos.bookapp.service/ch.bfh.swos.bookapp.service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module deploy-path="/WEB-INF/lib" handle="module:/resource/ch.bfh.swos.bookapp.domain/ch.bfh.swos.bookapp.domain">
+        <dependent-module archiveName="ch.bfh.swos.bookapp.domain-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ch.bfh.swos.bookapp.domain/ch.bfh.swos.bookapp.domain">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="ch.bfh.swos.bookapp.rest"/>

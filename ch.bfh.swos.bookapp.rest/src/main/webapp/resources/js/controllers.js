@@ -2,7 +2,8 @@
 
 var controllers = angular.module('controllers', ['services','elasticjs.service']);
 
-function BookController($scope, Book, Author) {
+controllers.controller('BookController', ['$scope', 'Book', 'Author', function($scope, Book, Author) {
+
     $scope.currentBook = new Book();
     $scope.currentBook.releaseDate = new Date();
     $scope.books = Book.query();
@@ -34,15 +35,9 @@ function BookController($scope, Book, Author) {
 		$scope.books.splice(index, 1);
 		Book.remove({bookId:id});
     };
-}
+}]);
 
-function filterById(array, id) {
-    return array.filter(function (object) {
-    	return object.id == id;
-    })[0];
-}
-
-function AuthorController($scope, Author) {
+controllers.controller('AuthorController', ['$scope', 'Author', function($scope, Author) {
     $scope.currentAuthor = new Author();
     $scope.authors = Author.query();
     $scope.showId = false;
@@ -88,8 +83,14 @@ function SearchController($scope, ejsResource) {
     $scope.getBook = function(doc) {
     	return doc._source;
     };
-}
+}]);
 
-function NavController($scope, $rootScope, $route) {
+controllers.controller('NavController', ['$scope', '$rootScope', '$route', function($scope, $rootScope, $route) {
 	$rootScope.route = $route;
+}]);
+
+function filterById(array, id) {
+    return array.filter(function (object) {
+        return object.id == id;
+    })[0];
 }

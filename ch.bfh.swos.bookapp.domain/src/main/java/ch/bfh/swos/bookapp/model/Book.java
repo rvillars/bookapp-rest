@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -26,6 +27,7 @@ public class Book implements Serializable {
 	private Date releaseDate;
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
 	private Author author;
 
 	public Book() {
