@@ -65,9 +65,9 @@ controllers.controller('AuthorController', ['$scope', 'Author', function($scope,
 		$scope.authors.splice(index, 1);
 		Author.remove({authorId:id});
     };
-}
+}]);
 
-function SearchController($scope, ejsResource) {
+controllers.controller('SearchController', ['$scope', 'ejsResource', function($scope, ejsResource) {
     var ejs = ejsResource('http://localhost:9200');
     var oQuery = ejs.QueryStringQuery();
     var client = ejs.Request()
