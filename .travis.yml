@@ -3,3 +3,4 @@ language: java
 deploy:
   provider: heroku
   api_key: e61e018d-2ee2-46f4-be11-555e9d0f93c7
+  buildpack: java
