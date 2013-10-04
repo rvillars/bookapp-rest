@@ -4,7 +4,7 @@ This is a small example bookstore application that shows the same look and feel 
 
 Technologies used:
 * maven
-* JPA/EclipseLink
+* JPA / EclipseLink
 * Spring
 * ModelMapper (for DTO creation)
 * JSF2
