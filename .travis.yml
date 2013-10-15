@@ -5,6 +5,6 @@ deploy:
   password:
     secure: i5pFFq4v/uo7V0wCexclc7y8Rvo+QPcqm0E5TNmhC2UJNW/IBZMALlAWH7oxnsSA++0k1bFSuFftVDzHSOXbmelmGwnUIxe3jv/dkLaYbl831R6ieYoNKoBV8HSRhPj+j8JbL2UUYdGoU7GJ5hflO8UOYfQR7iHXGXE4dqZBQOs=
   app: bookapp-rest
-  domain: rest-bookapp
+  domain: bookapp
   on:
     repo: rvillars/bookapp-rest
