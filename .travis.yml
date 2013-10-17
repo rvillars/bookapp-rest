@@ -4,5 +4,6 @@ env:
 language: java
 script: mvn package
 after_success:
-- gem install af
-- af login roger.villars@bluewin.ch $PASSWORD
+  - gem install af
+  - af login roger.villars@bluewin.ch --passwd $PASSWORD
+  - af update bookapp-rest --path ./ch.bfh.swos.bookapp.rest/target/ch.bfh.swos.bookapp.rest-0.0.1-SNAPSHOT.war
