@@ -12,7 +12,7 @@
     <!-- *** Datasource *** -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:mem" />
+        <property name="url" value="jdbc:h2:mem:bookapp;DB_CLOSE_DELAY=-1" />
         <property name="username" value="bfh" />
         <property name="password" value="bfh"/>
     </bean>
@@ -31,6 +31,8 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="eclipselink.weaving">static</prop>
+                <prop key="eclipselink.ddl-generation">create-tables</prop>
+                <prop key="eclipselink.ddl-generation.output-mode">database</prop>
 			</props>
 		</property>
 	</bean>

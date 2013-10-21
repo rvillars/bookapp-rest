@@ -3,9 +3,5 @@
 	<persistence-unit name="ch.bfh.swos.bookapp.domain" transaction-type="RESOURCE_LOCAL">
 		<class>ch.bfh.swos.bookapp.model.Author</class>
 		<class>ch.bfh.swos.bookapp.model.Book</class>
-		<properties>
-			<property name="eclipselink.ddl-generation" value="create-tables"/>
-			<property name="eclipselink.ddl-generation.output-mode" value="database"/>
-		</properties>
 	</persistence-unit>
 </persistence>
