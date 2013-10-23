@@ -8,11 +8,20 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<context:component-scan base-package="ch.bfh.swos.bookapp.repository" />
-	
-	<!-- *** EntityManagerFactory *** -->
+
+    <!-- *** Datasource *** -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.h2.Driver" />
+        <property name="url" value="jdbc:h2:mem:bookapp;DB_CLOSE_DELAY=-1" />
+        <property name="username" value="bfh" />
+        <property name="password" value="bfh"/>
+    </bean>
+
+    <!-- *** EntityManagerFactory *** -->
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="ch.bfh.swos.bookapp.domain" />
+        <property name="dataSource" ref="dataSource"/>
 		<property name="jpaVendorAdapter">
 			<bean
 				class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
@@ -22,6 +31,8 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="eclipselink.weaving">static</prop>
+                <prop key="eclipselink.ddl-generation">create-tables</prop>
+                <prop key="eclipselink.ddl-generation.output-mode">database</prop>
 			</props>
 		</property>
 	</bean>
