@@ -23,13 +23,13 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>3.2.0.RELEASE</version>
+			<version>3.2.4.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.8</version>
+			<version>1.9.13</version>
 		</dependency>
 
 	</dependencies>

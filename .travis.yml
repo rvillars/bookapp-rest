@@ -1,0 +1,10 @@
+env:
+  global:
+    secure: OQYLTOH1CK10wWpEFZE0fiaf3saxq2EQAJOQiOQQp6KhzpAaMhs8C0Kj0kJNdrxMCJybnK6i1vA3LPKY6G5KpweJ4Nu9tylIRy4qurvaoYLXzyrttIukq2XUwbTeOg9UqMpFG8f/wciG4iSPUSN9MEyW+7JMwNAIRurNcoNRCuU=
+language: java
+script: mvn package
+after_success:
+  - gem install af
+  - af login roger.villars@bluewin.ch --passwd $PASSWORD
+  - af update bookapp-rest --path ./ch.bfh.swos.bookapp.rest/target/ch.bfh.swos.bookapp.rest-0.0.1-SNAPSHOT.war
+  - af update bookapp-jsf --path ./ch.bfh.swos.bookapp.jsf/target/ch.bfh.swos.bookapp.jsf-0.0.1-SNAPSHOT.war
