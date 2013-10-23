@@ -1,0 +1,4 @@
+# deactivate travis build
+branches:
+  except:
+    - elasticsearch
