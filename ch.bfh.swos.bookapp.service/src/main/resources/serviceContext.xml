@@ -8,16 +8,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<import resource="classpath*:persistenceContext.xml"/>
+    <import resource="classpath*:elasticsearchContext.xml"/>
 	<context:component-scan base-package="ch.bfh.swos.bookapp.service.impl" />
-
-	<bean id="esNode" class="ch.bfh.swos.bookapp.service.elastic.ElasticsearchClientFactoryBean">
-		<property name="settings">
-			<map>
-				<entry key="name" value="bookapp.node"/>
-				<entry key="path.data" value="D:/temp/data"/>
-				<entry key="node.local" value="true"/>
-			</map>
-		</property>
-	</bean>
 
 </beans>

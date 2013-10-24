@@ -1,5 +1,7 @@
 package ch.bfh.swos.bookapp.model;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.TemporalType.DATE;
 
@@ -17,11 +19,12 @@ import javax.persistence.Temporal;
  * 
  */
 @Entity
+@Document(indexName = "bookapp",type = "book" , shards = 1, replicas = 0, indexStoreType = "memory")
 public class Book implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	private long id;
+	private Long id;
 	private String title;
 	@Temporal(DATE)
 	private Date releaseDate;
@@ -34,11 +37,11 @@ public class Book implements Serializable {
 		super();
 	}
 
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
