@@ -5,13 +5,13 @@ It indexes data with help of Spring Data ElasticSearch and uses elastic.js for t
 
 Technologies used:
 
-maven
-ElasticSearch
-SpringData
-elastic.js
-JPA / EclipseLink
-Spring
-ModelMapper (for DTO creation)
-SpringMVC
-AngularJS
-jQueryUI
+- maven
+- ElasticSearch
+- SpringData
+- elastic.js
+- JPA / EclipseLink
+- Spring
+- ModelMapper (for DTO creation)
+- SpringMVC
+- AngularJS
+- jQueryUI
