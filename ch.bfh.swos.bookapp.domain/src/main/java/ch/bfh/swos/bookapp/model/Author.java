@@ -22,7 +22,7 @@ public class Author implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	private long id;
+	private Long id;
 	private String firstname;
 	private String lastname;
 	private static final long serialVersionUID = 1L;
@@ -34,11 +34,11 @@ public class Author implements Serializable {
 		super();
 	}
 
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

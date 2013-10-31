@@ -24,17 +24,18 @@ public class DefaultBookService implements BookService {
 
 	public BookDTO create(BookDTO bookDto) {
 		Book book = mapper.map(bookDto, Book.class);
-		Book persistedBook = bookRepository.create(book);
+		Book persistedBook = bookRepository.save(book);
 		return mapper.map(persistedBook, BookDTO.class);
 	}
 
 	public BookDTO read(long id) {
-		Book book = bookRepository.read(id);
-		return mapper.map(book, BookDTO.class);
+		Book book = bookRepository.findOne(id);
+		if (book == null) return null;
+        return mapper.map(book, BookDTO.class);
 	}
 
 	public Collection<BookDTO> list() {
-		Collection<Book> books = bookRepository.list();
+		Iterable<Book> books = bookRepository.findAll();
 		Type listType = new TypeToken<Collection<BookDTO>>() {
 		}.getType();
 		return mapper.map(books, listType);
@@ -42,12 +43,12 @@ public class DefaultBookService implements BookService {
 
 	public BookDTO update(BookDTO bookDto) {
 		Book book = mapper.map(bookDto, Book.class);
-		Book updatedBook = bookRepository.update(book);
+		Book updatedBook = bookRepository.save(book);
 		return mapper.map(updatedBook, BookDTO.class);
 	}
 
 	public void delete(BookDTO bookDto) {
-		Book book = bookRepository.read(bookDto.getId());
+		Book book = bookRepository.findOne(bookDto.getId());
 		bookRepository.delete(book);
 	}
 
