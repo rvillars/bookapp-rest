@@ -6,7 +6,11 @@
 	<servlet>
 		<servlet-name>rest</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
+        <init-param>
+            <param-name>dispatchOptionsRequest</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>

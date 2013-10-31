@@ -3,6 +3,7 @@ package ch.bfh.swos.bookapp.rest.controller;
 import java.util.Collection;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -28,10 +29,11 @@ public class BookController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
-	public BookDTO create(@RequestBody BookDTO book) {
+	public BookDTO create(@RequestBody BookDTO book, final HttpServletResponse response) {
 		BookDTO createdBook = bookService.create(book);
 		System.out.println("Book created with id = " + createdBook.getId());
-		return createdBook;
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        return createdBook;
 	}
 
 	/**
@@ -39,9 +41,10 @@ public class BookController {
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public Collection<BookDTO> list() {
+	public Collection<BookDTO> list(final HttpServletResponse response) {
 		System.out.println("Collection of Book requested");
-		return bookService.list();
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        return bookService.list();
 	}
 
 	/**
@@ -49,9 +52,10 @@ public class BookController {
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public BookDTO read(@PathVariable long id) {
+    public BookDTO read(@PathVariable long id, final HttpServletResponse response) {
 		System.out.println("Book requested with id = " + id);
-		return bookService.read(id);
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        return bookService.read(id);
 	}
 
 	/**
@@ -59,10 +63,11 @@ public class BookController {
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	@ResponseBody
-	public BookDTO update(@RequestBody BookDTO book, @PathVariable long id) {
+	public BookDTO update(@RequestBody BookDTO book, @PathVariable long id, final HttpServletResponse response) {
 		BookDTO updatedBook = bookService.update(book);
 		System.out.println("Book updated with id = " + updatedBook.getId());
-		return updatedBook;
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        return updatedBook;
 	}
 
 	/**
@@ -70,9 +75,17 @@ public class BookController {
 	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
-	public void delete(@PathVariable long id) {
+	public void delete(@PathVariable long id, final HttpServletResponse response) {
 		BookDTO book = bookService.read(id);
 		bookService.delete(book);
-		System.out.println("Delete Book with id = " + id);
+        System.out.println("Delete Book with id = " + id);
+        response.addHeader("Access-Control-Allow-Origin", "*");
 	}
+
+    @RequestMapping(method = RequestMethod.OPTIONS)
+    public void catchAllOpt(final HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "HEAD, GET, OPTIONS, POST");
+        response.addHeader("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
+    }
 }

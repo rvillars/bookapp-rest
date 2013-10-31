@@ -10,8 +10,8 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modules>
     <module>ch.bfh.swos.bookapp.domain</module>
     <module>ch.bfh.swos.bookapp.service</module>
-	<module>ch.bfh.swos.bookapp.jsf</module>
     <module>ch.bfh.swos.bookapp.rest</module>
+    <module>ch.bfh.swos.bookapp.mobile</module>
   </modules>
   
   <build>
