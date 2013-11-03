@@ -27,4 +27,14 @@
 		<param-value>classpath*:serviceContext.xml</param-value>
 	</context-param>
 
+    <filter>
+        <filter-name>CORS</filter-name>
+        <filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>CORS</filter-name>
+        <servlet-name>rest</servlet-name>
+    </filter-mapping>
+
 </web-app>
