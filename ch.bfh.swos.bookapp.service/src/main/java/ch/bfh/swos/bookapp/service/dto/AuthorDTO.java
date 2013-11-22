@@ -16,11 +16,11 @@ public class AuthorDTO implements Serializable {
     @ApiModelProperty(required = false, value = "Unique id of the author", position = 1)
     private Long id;
 
-    @ApiModelProperty(required = true, value = "Firstname of the book", position = 2)
+    @ApiModelProperty(required = true, value = "Firstname of the author", position = 2)
 	@NotNull
     private String firstname;
 
-    @ApiModelProperty(required = true, value = "Lastname the book", position = 3)
+    @ApiModelProperty(required = true, value = "Lastname the author", position = 3)
     @NotNull
 	private String lastname;
 
