@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="bookapp">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>BFH BookApp Mobile</title>
+
+    <link rel="stylesheet" type="text/css" href="resources/css/jquery.mobile.min.css">
+
+    <script type="text/javascript" src="resources/js/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/js/lib/jquery.mobile.min.js"></script>
+    <script type="text/javascript" src="resources/js/lib/angular.min.js"></script>
+    <script type="text/javascript" src="resources/js/lib/angular-resource.min.js"></script>
+
+    <script type="text/javascript" src="resources/js/application.js"></script>
+    <script type="text/javascript" src="resources/js/controllers.js"></script>
+    <script type="text/javascript" src="resources/js/services.js"></script>
+
+</head>
+
+<body>
+
+<div data-role="page">
+
+    <div data-role="header">
+        <h1>BFH BookApp Mobile</h1>
+    </div><!-- /header -->
+
+    <div role="main" data-role="content" ng-controller="BookController">
+        <form>
+            <input id="filter-for-listview" data-type="search" placeholder="Type to search..."></input>
+        </form>
+        <ul data-role="listview" data-inset="true" data-filter="true" data-input="#filter-for-listview">
+            <li ng-repeat="book in books"><a href="#">{{book.title}}</a></li>
+        </ul>
+    </div><!-- /content -->
+
+    <div data-role="footer" data-position="fixed">
+        <h4>Footer content</h4>
+    </div><!-- /footer -->
+
+</div><!-- /page -->
+
+</body>
+</html>

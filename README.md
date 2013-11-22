@@ -1,15 +1,14 @@
-bookapp-rest [![Build Status](https://travis-ci.org/rvillars/bookapp-rest.png?branch=master)](https://travis-ci.org/rvillars/bookapp-rest)
+bookapp-rest
 ============
-This is a small example bookstore application that shows the same look and feel implemented once with JSF and once with REST/AngularJS so the different approaches can be compared.
-
-See Appfog for a running instance of [REST](http://bookapp-rest.eu01.aws.af.cm) and [JSF](http://bookapp-jsf.eu01.aws.af.cm)
+This branch of bookapp-rest provides a public REST api with CORS, a documentation (/api-doc) and bean validation for the API entities.
+It is based on Jersey 2.4.1 and Swagger 1.3.1.
 
 Technologies used:
 * maven
 * JPA / EclipseLink
 * Spring
 * ModelMapper (for DTO creation)
-* JSF2
-* SpringMVC
+* Jersey
+* Swagger
 * AngularJS
 * jQueryUI

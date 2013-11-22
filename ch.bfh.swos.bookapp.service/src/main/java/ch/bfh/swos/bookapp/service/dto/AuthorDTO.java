@@ -1,5 +1,8 @@
 package ch.bfh.swos.bookapp.service.dto;
 
+import com.wordnik.swagger.annotations.ApiModelProperty;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -9,8 +12,16 @@ import java.io.Serializable;
 public class AuthorDTO implements Serializable {
 
 	private static final long serialVersionUID = -4783174154421098852L;
-	private Long id;
-	private String firstname;
+
+    @ApiModelProperty(required = false, value = "Unique id of the author", position = 1)
+    private Long id;
+
+    @ApiModelProperty(required = true, value = "Firstname of the book", position = 2)
+	@NotNull
+    private String firstname;
+
+    @ApiModelProperty(required = true, value = "Lastname the book", position = 3)
+    @NotNull
 	private String lastname;
 
 	public AuthorDTO() {
