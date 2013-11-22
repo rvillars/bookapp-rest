@@ -52,7 +52,7 @@
         </init-param>
         <init-param>
             <param-name>swagger.api.basepath</param-name>
-            <param-value>http://localhost:8080/rest</param-value>
+            <param-value>http://bookapp-jersey.eu01.aws.af.cm/rest</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
