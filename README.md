@@ -1,4 +1,4 @@
-bookapp-jersey
+bookapp-jersey [![Build Status](https://travis-ci.org/rvillars/bookapp-rest.png?branch=jersey)](https://travis-ci.org/rvillars/bookapp-rest)
 ==============
 This branch of bookapp-rest provides a public REST API with CORS, documentation (/api-doc) and bean validation for the API entities.
 It is based on Jersey 2.4.1 and Swagger 1.3.1.
