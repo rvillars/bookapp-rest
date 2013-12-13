@@ -1,6 +1,6 @@
 'use strict';
 
-var bookapp = angular.module('bookapp', ['controllers', 'services','directives', 'ui.bootstrap', 'pascalprecht.translate']);
+var bookapp = angular.module('bookapp', ['controllers', 'services', 'ui.bootstrap', 'pascalprecht.translate']);
 
 bookapp.config(function ($routeProvider) {
     $routeProvider.
@@ -11,7 +11,7 @@ bookapp.config(function ($routeProvider) {
 });
 
 bookapp.config(function ($translateProvider) {
-    $translateProvider.useUrlLoader('/ch.bfh.swos.bookapp.rest/rest/messageBundle');
+    $translateProvider.useUrlLoader('/rest/messageBundle');
     $translateProvider.useStorage('UrlLanguageStorage');
     $translateProvider.preferredLanguage('en');
     $translateProvider.fallbackLanguage('en');
