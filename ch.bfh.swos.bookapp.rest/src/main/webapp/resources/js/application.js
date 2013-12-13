@@ -1,6 +1,6 @@
 'use strict';
 
-var bookapp = angular.module('bookapp', ['controllers', 'services','directives', 'pascalprecht.translate']);
+var bookapp = angular.module('bookapp', ['controllers', 'services','directives', 'ui.bootstrap', 'pascalprecht.translate']);
 
 bookapp.config(function ($routeProvider) {
     $routeProvider.
@@ -9,7 +9,6 @@ bookapp.config(function ($routeProvider) {
         when('/authors', {templateUrl: 'pages/authors.html', activeMenu: 'authors'}).
         otherwise({redirectTo: '/'});
 });
-
 
 bookapp.config(function ($translateProvider) {
     $translateProvider.useUrlLoader('/ch.bfh.swos.bookapp.rest/rest/messageBundle');

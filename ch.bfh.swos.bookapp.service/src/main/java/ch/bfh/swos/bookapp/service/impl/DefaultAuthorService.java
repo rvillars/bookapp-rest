@@ -24,17 +24,18 @@ public class DefaultAuthorService implements AuthorService {
 
 	public AuthorDTO create(AuthorDTO authorDto) {
 		Author author = mapper.map(authorDto, Author.class);
-		Author persistedAuthor = authorRepository.create(author);
+		Author persistedAuthor = authorRepository.save(author);
 		return mapper.map(persistedAuthor, AuthorDTO.class);
 	}
 
 	public AuthorDTO read(long id) {
-		Author author = authorRepository.read(id);
-		return mapper.map(author, AuthorDTO.class);
+		Author author = authorRepository.findOne(id);
+        if (author == null) return null;
+        return mapper.map(author, AuthorDTO.class);
 	}
 
 	public Collection<AuthorDTO> list() {
-		Collection<Author> authors = authorRepository.list();
+		Iterable<Author> authors = authorRepository.findAll();
 		Type listType = new TypeToken<Collection<AuthorDTO>>() {
 		}.getType();
 		return mapper.map(authors, listType);
@@ -42,12 +43,12 @@ public class DefaultAuthorService implements AuthorService {
 
 	public AuthorDTO update(AuthorDTO authorDto) {
 		Author author = mapper.map(authorDto, Author.class);
-		Author updatedAuthor = authorRepository.update(author);
+		Author updatedAuthor = authorRepository.save(author);
 		return mapper.map(updatedAuthor, AuthorDTO.class);
 	}
 
 	public void delete(AuthorDTO authorDto) {
-		Author author = authorRepository.read(authorDto.getId());
+		Author author = authorRepository.findOne(authorDto.getId());
 		authorRepository.delete(author);
 	}
 }

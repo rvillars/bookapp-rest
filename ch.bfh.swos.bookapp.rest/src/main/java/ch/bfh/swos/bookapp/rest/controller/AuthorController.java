@@ -50,7 +50,7 @@ public class AuthorController {
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public AuthorDTO read(@PathVariable long id) {
-		System.out.println("Book requested with id = " + id);
+		System.out.println("Author requested with id = " + id);
 		return authorService.read(id);
 	}
 

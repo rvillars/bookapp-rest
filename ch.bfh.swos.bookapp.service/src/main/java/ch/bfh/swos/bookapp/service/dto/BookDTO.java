@@ -10,7 +10,7 @@ import java.util.Date;
 public class BookDTO implements Serializable {
 
 	private static final long serialVersionUID = -7591860079571184677L;
-	private long id;
+	private Long id;
 	private String title;
 	private Date releaseDate;
 
@@ -20,11 +20,11 @@ public class BookDTO implements Serializable {
 		super();
 	}
 
-	public long getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

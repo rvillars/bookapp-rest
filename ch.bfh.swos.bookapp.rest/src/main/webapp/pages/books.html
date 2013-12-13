@@ -5,7 +5,7 @@
         	<label for="title">Title</label>
         	<input id="title" required type="text" ng-model="currentBook.title" placeholder="Enter a book title..." class="span5"/>
 	        <label for="releaseDate">Release date</label>
-	        <input id="releaseDate" type="text" ng-model="currentBook.releaseDate" ui-date="{ dateFormat: 'dd.mm.yy' }" date="dd.MM.yyyy"/>
+	        <input id="releaseDate" type="text" ng-model="currentBook.releaseDate" datepicker-popup="dd.MM.yyyy"/>
 	       	<label for="author">Author</label>
 			<select id="author" required ng-model="currentBook.author" ng-options="author as (author.firstname + ' ' + author.lastname) for author in authors">
 				<option value="">-- choose author --</option>

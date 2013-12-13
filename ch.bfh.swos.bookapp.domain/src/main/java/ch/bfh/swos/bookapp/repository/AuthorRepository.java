@@ -3,17 +3,8 @@ package ch.bfh.swos.bookapp.repository;
 import java.util.Collection;
 
 import ch.bfh.swos.bookapp.model.Author;
+import org.springframework.data.repository.CrudRepository;
 
-public interface AuthorRepository {
-
-	public Author create(Author author);
-
-	public Author read(long id);
-
-	public Collection<Author> list();
-
-	public Author update(Author author);
-
-	public void delete(Author author);
+public interface AuthorRepository extends CrudRepository<Author, Long> {
 
 }

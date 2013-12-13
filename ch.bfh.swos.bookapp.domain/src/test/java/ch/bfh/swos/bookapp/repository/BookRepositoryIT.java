@@ -1,19 +1,17 @@
-package ch.bfh.swos.bookapp.service;
+package ch.bfh.swos.bookapp.repository;
 
-import javax.inject.Inject;
-
+import ch.bfh.swos.bookapp.model.Book;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import ch.bfh.swos.bookapp.model.Book;
-import ch.bfh.swos.bookapp.repository.BookRepository;
+import javax.inject.Inject;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("/serviceContext.xml")
-public class PersistenceServiceIT {
+@ContextConfiguration("/persistenceContext.xml")
+public class BookRepositoryIT {
 
 	@Inject
 	private BookRepository bookRepository;
@@ -21,24 +19,24 @@ public class PersistenceServiceIT {
 	@Test
 	public void test() {
 
-		// Create
+		// Save
 		Book newBook = new Book();
 		newBook.setTitle("Test");
-		bookRepository.create(newBook);
+		newBook = bookRepository.save(newBook);
 
-		// Read
-		Book readBook = bookRepository.read(newBook.getId());
+		// FindOne
+		Book readBook = bookRepository.findOne(newBook.getId());
 		Assert.assertTrue(newBook.getTitle().equals(readBook.getTitle()));
 
-		// Update
+		// Change
 		readBook.setTitle("Test2");
-		readBook = bookRepository.update(readBook);
-		Book updatedBook = bookRepository.read(readBook.getId());
+		readBook = bookRepository.save(readBook);
+		Book updatedBook = bookRepository.findOne(readBook.getId());
 		Assert.assertTrue(readBook.getTitle().equals(updatedBook.getTitle()));
 
 		// Delete
 		bookRepository.delete(updatedBook);
-		Book deletedBook = bookRepository.read(readBook.getId());
+		Book deletedBook = bookRepository.findOne(readBook.getId());
 		Assert.assertNull(deletedBook);
 	}
 
