@@ -21,7 +21,7 @@
     </mvc:interceptors>
 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-        <property name="defaultLocale" value="en" />
+        <property name="defaultLocale" value="en"/>
     </bean>
 
     <bean id="messageSource" class="ch.bfh.swos.bookapp.rest.common.SerializableResourceBundleMessageSource">
@@ -29,5 +29,5 @@
             <value>classpath:/messages</value>
         </property>
     </bean>
-    
+
 </beans>

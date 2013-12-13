@@ -14,9 +14,10 @@ services.factory('Author', ['$resource', function ($resource) {
     });
 }]);
 
-services.factory('UrlLanguageStorage', ['$location', function($location) {
+services.factory('UrlLanguageStorage', ['$location', function ($location) {
     return {
-        set: function (name, value) {},
+        set: function (name, value) {
+        },
         get: function (name) {
             return $location.search()['lang']
         }

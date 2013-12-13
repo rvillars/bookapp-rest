@@ -71,7 +71,7 @@ controllers.controller('NavController', ['$scope', '$rootScope', '$route', funct
     $rootScope.route = $route;
 }]);
 
-controllers.controller('LanguageController', ['$scope','$translate','$location', function($scope, $translate, $location) {
+controllers.controller('LanguageController', ['$scope', '$translate', '$location', function ($scope, $translate, $location) {
     $scope.changeLanguage = function (locale) {
         $translate.uses(locale);
         $location.search('lang', locale);
