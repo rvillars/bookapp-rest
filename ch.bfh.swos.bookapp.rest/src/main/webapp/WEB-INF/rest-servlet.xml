@@ -13,5 +13,5 @@
 
     <context:component-scan base-package="ch.bfh.swos.bookapp.rest.controller"/>
     <mvc:annotation-driven/>
-    
+
 </beans>

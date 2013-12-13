@@ -23,38 +23,41 @@
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavController">
-	<div class="navbar-inner">
-    	<div class="container">
-        	<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-           		<span class="icon-bar"></span>
-         	</button>
-         	<a class="brand" href="#">BookApp</a>
-         	<div class="nav-collapse collapse">
-           		<ul class="nav">
-             		<li ng-class="{active: route.current.activeMenu == 'books'}"><a href="#books">Books</a></li>
-             		<li ng-class="{active: route.current.activeMenu == 'authors'}"><a href="#authors">Authors</a></li>
-           		</ul>
-         	</div><!--/.nav-collapse -->
-     	</div>
-   	</div>
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">BookApp</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li ng-class="{active: route.current.activeMenu == 'books'}"><a href="#books">Books</a></li>
+                    <li ng-class="{active: route.current.activeMenu == 'authors'}"><a href="#authors">Authors</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
 </div>
 
 <div class="container">
 
-<!-- Main hero unit for a primary marketing message or call to action -->
-<div class="hero-unit">
-	<div class="row">
-        <div class="span2">
-        	<img src="resources/img/books.png" class="img-rounded">
-        </div>
-        <div class="span8">
-        	<h1>BookApp</h1>
-        	<p>This is the BFH BookApp example website.</p>
-    	</div>
-	</div>
-</div>
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="hero-unit">
+        <div class="row">
+            <div class="span2">
+                <img src="resources/img/books.png" class="img-rounded">
+            </div>
+            <div class="span8">
+                <h1>BookApp</h1>
 
-<div ng-view></div>
+                <p>This is the BFH BookApp example website.</p>
+            </div>
+        </div>
+    </div>
+
+    <div ng-view></div>
 </div>
 </body>
 </html>

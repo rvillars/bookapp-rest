@@ -1,87 +1,89 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/templates/template.xhtml">
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/templates/template.xhtml">
 
-	<ui:define name="content">
-		<f:view>
-			<h:form id="form">				
-				<fieldset>
-					<legend>Current Book</legend>
-					<h:messages class="alert alert-error"/>
-					<h:outputLabel for="title" value="Title" />
-					<h:inputText id="title" value="#{bookController.currentBook.title}" required="true" class="span5" />
-					<p:watermark for="title" value="Enter a book title..." />
-					<h:outputLabel for="releaseDate" value="Release date" />
-					<p:calendar id="releaseDate" locale="de" pattern="dd.MM.yyyy" value="#{bookController.currentBook.releaseDate}" />
-					<h:outputLabel for="author" value="Author" />
-					<h:selectOneMenu id="author" required="true" value="#{bookController.currentBook.author}" converter="omnifaces.SelectItemsIndexConverter">
-						<f:selectItem itemLabel="-- choose author --" noSelectionOption="true"/>
-						<f:selectItems value="#{authorController.authors}" var="author" itemLabel="#{author.firstname} #{author.lastname}" itemValue="#{author}"/>
-					</h:selectOneMenu>
-					<h:outputLabel for="id" value="Id" rendered="#{bookController.showId}" />
-					<h:inputText id="id" value="#{bookController.currentBook.id}" rendered="#{bookController.showId}" disabled="true"
-						class="span1" />
-					<div class="form-actions">
-						<h:commandButton id="save" action="#{bookController.save}" value="Save Book" class="btn btn-primary" />
-						<h:commandButton id="cancel" action="#{bookController.cancel}" immediate="true" value="Cancel" class="btn"/>
-					</div>
-				</fieldset>
-			</h:form>
+    <ui:define name="content">
+        <f:view>
+            <h:form id="form">
+                <fieldset>
+                    <legend>Current Book</legend>
+                    <h:messages class="alert alert-error"/>
+                    <h:outputLabel for="title" value="Title"/>
+                    <h:inputText id="title" value="#{bookController.currentBook.title}" required="true" class="span5"/>
+                    <p:watermark for="title" value="Enter a book title..."/>
+                    <h:outputLabel for="releaseDate" value="Release date"/>
+                    <p:calendar id="releaseDate" locale="de" pattern="dd.MM.yyyy" value="#{bookController.currentBook.releaseDate}"/>
+                    <h:outputLabel for="author" value="Author"/>
+                    <h:selectOneMenu id="author" required="true" value="#{bookController.currentBook.author}" converter="omnifaces.SelectItemsIndexConverter">
+                        <f:selectItem itemLabel="-- choose author --" noSelectionOption="true"/>
+                        <f:selectItems value="#{authorController.authors}" var="author" itemLabel="#{author.firstname} #{author.lastname}"
+                                       itemValue="#{author}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel for="id" value="Id" rendered="#{bookController.showId}"/>
+                    <h:inputText id="id" value="#{bookController.currentBook.id}" rendered="#{bookController.showId}" disabled="true"
+                                 class="span1"/>
 
-			<h:form id="list">
-				<fieldset>
-					<legend>Books</legend>
-					<h:panelGrid columns="2">
-						<h:selectBooleanCheckbox id="showId" value="#{bookController.showId}">
-							<f:ajax render=":form table" />
-						</h:selectBooleanCheckbox>
-						<h:outputLabel for="showId" value="Show Id" />
-					</h:panelGrid>
-					<h:dataTable id="table" value="#{bookController.books}" var="book"
-						class="table table-striped table-bordered table-condensed">
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Titel" />
-							</f:facet>
-							<h:outputText value="#{book.title}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Release Date" />
-							</f:facet>
-							<h:outputText value="#{book.releaseDate}">
-								<f:convertDateTime pattern="dd.MM.yyyy" timeZone="CET" />
-							</h:outputText>
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Author" />
-							</f:facet>
-							<h:outputText value="#{book.author.firstname} #{book.author.lastname}" />
-						</h:column>
-						<h:column rendered="#{bookController.showId}">
-							<f:facet name="header">
-								<h:outputText value="Id" />
-							</f:facet>
-							<h:outputText value="#{book.id}" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Edit" />
-							</f:facet>
-							<h:commandButton id="edit" action="#{bookController.edit}" value="Edit" class="btn btn-mini" />
-						</h:column>
-						<h:column>
-							<f:facet name="header">
-								<h:outputText value="Delete" />
-							</f:facet>
-							<h:commandButton id="delete" action="#{bookController.remove}" value="Delete" class="btn btn-mini" />
-						</h:column>
-					</h:dataTable>
-				</fieldset>
-			</h:form>
-		</f:view>
-	</ui:define>
+                    <div class="form-actions">
+                        <h:commandButton id="save" action="#{bookController.save}" value="Save Book" class="btn btn-primary"/>
+                        <h:commandButton id="cancel" action="#{bookController.cancel}" immediate="true" value="Cancel" class="btn"/>
+                    </div>
+                </fieldset>
+            </h:form>
+
+            <h:form id="list">
+                <fieldset>
+                    <legend>Books</legend>
+                    <h:panelGrid columns="2">
+                        <h:selectBooleanCheckbox id="showId" value="#{bookController.showId}">
+                            <f:ajax render=":form table"/>
+                        </h:selectBooleanCheckbox>
+                        <h:outputLabel for="showId" value="Show Id"/>
+                    </h:panelGrid>
+                    <h:dataTable id="table" value="#{bookController.books}" var="book"
+                                 class="table table-striped table-bordered table-condensed">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Titel"/>
+                            </f:facet>
+                            <h:outputText value="#{book.title}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Release Date"/>
+                            </f:facet>
+                            <h:outputText value="#{book.releaseDate}">
+                                <f:convertDateTime pattern="dd.MM.yyyy" timeZone="CET"/>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Author"/>
+                            </f:facet>
+                            <h:outputText value="#{book.author.firstname} #{book.author.lastname}"/>
+                        </h:column>
+                        <h:column rendered="#{bookController.showId}">
+                            <f:facet name="header">
+                                <h:outputText value="Id"/>
+                            </f:facet>
+                            <h:outputText value="#{book.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Edit"/>
+                            </f:facet>
+                            <h:commandButton id="edit" action="#{bookController.edit}" value="Edit" class="btn btn-mini"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Delete"/>
+                            </f:facet>
+                            <h:commandButton id="delete" action="#{bookController.remove}" value="Delete" class="btn btn-mini"/>
+                        </h:column>
+                    </h:dataTable>
+                </fieldset>
+            </h:form>
+        </f:view>
+    </ui:define>
 
 </ui:composition>

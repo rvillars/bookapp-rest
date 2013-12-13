@@ -1,6 +1,6 @@
 'use strict';
 
-var bookapp = angular.module('bookapp', ['controllers', 'services','ui.bootstrap']);
+var bookapp = angular.module('bookapp', ['controllers', 'services', 'ui.bootstrap']);
 
 bookapp.config(function ($routeProvider) {
     $routeProvider.
