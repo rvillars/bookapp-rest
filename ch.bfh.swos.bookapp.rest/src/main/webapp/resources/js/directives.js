@@ -4,8 +4,8 @@ var directives = angular.module('directives', ['ui.directives']);
 
 directives.directive('date', ['dateFilter', function (dateFilter) {
     return {
-        require:'ngModel',
-        link:function (scope, elm, attrs, ctrl) {
+        require: 'ngModel',
+        link: function (scope, elm, attrs, ctrl) {
 
             var dateFormat = attrs['date'] || 'dd.MM.yyyy';
             var minDate = Date.parse(attrs['min']) || 0;
