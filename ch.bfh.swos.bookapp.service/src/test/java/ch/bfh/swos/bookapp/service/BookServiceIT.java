@@ -1,6 +1,5 @@
 package ch.bfh.swos.bookapp.service;
 
-import ch.bfh.swos.bookapp.model.Book;
 import ch.bfh.swos.bookapp.service.dto.BookDTO;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,31 +13,31 @@ import javax.inject.Inject;
 @ContextConfiguration("/serviceContext.xml")
 public class BookServiceIT {
 
-	@Inject
-	private BookService bookService;
+    @Inject
+    private BookService bookService;
 
-	@Test
-	public void test() {
+    @Test
+    public void test() {
 
-		// Create
-		BookDTO newBook = new BookDTO();
-		newBook.setTitle("Test");
-		newBook = bookService.create(newBook);
+        // Create
+        BookDTO newBook = new BookDTO();
+        newBook.setTitle("Test");
+        newBook = bookService.create(newBook);
 
-		// Read
-		BookDTO readBook = bookService.read(newBook.getId());
-		Assert.assertTrue(newBook.getTitle().equals(readBook.getTitle()));
+        // Read
+        BookDTO readBook = bookService.read(newBook.getId());
+        Assert.assertTrue(newBook.getTitle().equals(readBook.getTitle()));
 
-		// Update
-		readBook.setTitle("Test2");
-		readBook = bookService.update(readBook);
-		BookDTO updatedBook = bookService.read(readBook.getId());
-		Assert.assertTrue(readBook.getTitle().equals(updatedBook.getTitle()));
+        // Update
+        readBook.setTitle("Test2");
+        readBook = bookService.update(readBook);
+        BookDTO updatedBook = bookService.read(readBook.getId());
+        Assert.assertTrue(readBook.getTitle().equals(updatedBook.getTitle()));
 
-		// Delete
-		bookService.delete(updatedBook);
-		BookDTO deletedBook = bookService.read(readBook.getId());
-		Assert.assertNull(deletedBook);
-	}
+        // Delete
+        bookService.delete(updatedBook);
+        BookDTO deletedBook = bookService.read(readBook.getId());
+        Assert.assertNull(deletedBook);
+    }
 
 }

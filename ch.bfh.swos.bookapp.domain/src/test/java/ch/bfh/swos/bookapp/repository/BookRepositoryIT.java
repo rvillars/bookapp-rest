@@ -13,31 +13,31 @@ import javax.inject.Inject;
 @ContextConfiguration("/persistenceContext.xml")
 public class BookRepositoryIT {
 
-	@Inject
-	private BookRepository bookRepository;
+    @Inject
+    private BookRepository bookRepository;
 
-	@Test
-	public void test() {
+    @Test
+    public void test() {
 
-		// Save
-		Book newBook = new Book();
-		newBook.setTitle("Test");
-		newBook = bookRepository.save(newBook);
+        // Save
+        Book newBook = new Book();
+        newBook.setTitle("Test");
+        newBook = bookRepository.save(newBook);
 
-		// FindOne
-		Book readBook = bookRepository.findOne(newBook.getId());
-		Assert.assertTrue(newBook.getTitle().equals(readBook.getTitle()));
+        // FindOne
+        Book readBook = bookRepository.findOne(newBook.getId());
+        Assert.assertTrue(newBook.getTitle().equals(readBook.getTitle()));
 
-		// Change
-		readBook.setTitle("Test2");
-		readBook = bookRepository.save(readBook);
-		Book updatedBook = bookRepository.findOne(readBook.getId());
-		Assert.assertTrue(readBook.getTitle().equals(updatedBook.getTitle()));
+        // Change
+        readBook.setTitle("Test2");
+        readBook = bookRepository.save(readBook);
+        Book updatedBook = bookRepository.findOne(readBook.getId());
+        Assert.assertTrue(readBook.getTitle().equals(updatedBook.getTitle()));
 
-		// Delete
-		bookRepository.delete(updatedBook);
-		Book deletedBook = bookRepository.findOne(readBook.getId());
-		Assert.assertNull(deletedBook);
-	}
+        // Delete
+        bookRepository.delete(updatedBook);
+        Book deletedBook = bookRepository.findOne(readBook.getId());
+        Assert.assertNull(deletedBook);
+    }
 
 }
