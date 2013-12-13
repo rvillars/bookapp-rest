@@ -1,37 +1,35 @@
 /**
- * 
+ *
  */
 package ch.bfh.swos.bookapp.model;
 
-import java.util.List;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-
-import org.junit.Test;
+import java.util.List;
 
 /**
  * @author rovi
- * 
  */
 public class DeleteIT {
 
-	@Test
-	public void test() {
+    @Test
+    public void test() {
 
-		EntityManager em = Persistence.createEntityManagerFactory(
-				"ch.bfh.swos.bookapp.domain").createEntityManager();
+        EntityManager em = Persistence.createEntityManagerFactory(
+                "ch.bfh.swos.bookapp.domain").createEntityManager();
 
-		Query q = em.createQuery("select a from Author a");
-		@SuppressWarnings("unchecked")
-		List<Author> foundAuthors = q.getResultList();
-		Author firstAuthor = foundAuthors.get(0);
+        Query q = em.createQuery("select a from Author a");
+        @SuppressWarnings("unchecked")
+        List<Author> foundAuthors = q.getResultList();
+        Author firstAuthor = foundAuthors.get(0);
 
-		// Write access needs a transaction
-		em.getTransaction().begin();
-		em.remove(firstAuthor);
-		em.getTransaction().commit();
-	}
+        // Write access needs a transaction
+        em.getTransaction().begin();
+        em.remove(firstAuthor);
+        em.getTransaction().commit();
+    }
 
 }

@@ -1,18 +1,18 @@
 package ch.bfh.swos.bookapp.service;
 
-import java.util.Collection;
-
 import ch.bfh.swos.bookapp.service.dto.AuthorDTO;
+
+import java.util.Collection;
 
 public interface AuthorService {
 
-	public AuthorDTO create(AuthorDTO authorDto);
+    public AuthorDTO create(AuthorDTO authorDto);
 
-	public AuthorDTO read(long id);
+    public AuthorDTO read(long id);
 
-	public Collection<AuthorDTO> list();
+    public Collection<AuthorDTO> list();
 
-	public AuthorDTO update(AuthorDTO book);
+    public AuthorDTO update(AuthorDTO book);
 
-	public void delete(AuthorDTO book);
+    public void delete(AuthorDTO book);
 }
