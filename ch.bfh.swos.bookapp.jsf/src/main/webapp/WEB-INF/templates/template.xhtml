@@ -1,51 +1,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>BFH BookApp JSF</title>
-	<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
-	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+    <title>BFH BookApp JSF</title>
+    <script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
 </h:head>
 
 <h:body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-				</button>
-				<a class="brand" href="#">BookApp</a>
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li class="#{view.viewId == '/pages/books.xhtml' ? 'active' : ''}"><a href="books.xhtml">Books</a></li>
-						<li class="#{view.viewId == '/pages/authors.xhtml' ? 'active' : ''}"><a href="authors.xhtml">Authors</a></li>
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href="#">BookApp</a>
 
-	<div class="container">
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="#{view.viewId == '/pages/books.xhtml' ? 'active' : ''}"><a href="books.xhtml">Books</a></li>
+                        <li class="#{view.viewId == '/pages/authors.xhtml' ? 'active' : ''}"><a href="authors.xhtml">Authors</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
 
-		<!-- Main hero unit for a primary marketing message or call to action -->
-		<div class="hero-unit">
-			<div class="row">
-				<div class="span2">
-					<h:graphicImage library="img" name="books.png" />
-				</div>
-				<div class="span8">
-					<h1>BookApp</h1>
-					<p>This is the BFH BookApp example website.</p>
-				</div>
-			</div>
-		</div>
+    <div class="container">
 
-		<ui:insert name="content" />
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="hero-unit">
+            <div class="row">
+                <div class="span2">
+                    <h:graphicImage library="img" name="books.png"/>
+                </div>
+                <div class="span8">
+                    <h1>BookApp</h1>
 
-	</div>
+                    <p>This is the BFH BookApp example website.</p>
+                </div>
+            </div>
+        </div>
+
+        <ui:insert name="content"/>
+
+    </div>
 </h:body>
 
 </html>

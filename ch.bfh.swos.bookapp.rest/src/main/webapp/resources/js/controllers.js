@@ -2,7 +2,7 @@
 
 var controllers = angular.module('controllers', ['services']);
 
-controllers.controller('BookController', ['$scope', 'Book', 'Author', function($scope, Book, Author) {
+controllers.controller('BookController', ['$scope', 'Book', 'Author', function ($scope, Book, Author) {
 
     $scope.currentBook = new Book();
     $scope.currentBook.releaseDate = new Date();
@@ -27,17 +27,17 @@ controllers.controller('BookController', ['$scope', 'Book', 'Author', function($
     };
 
     $scope.edit = function (book) {
-    	$scope.currentBook = book;
-    	$scope.currentBook.author = filterById($scope.authors, book.author.id);
+        $scope.currentBook = book;
+        $scope.currentBook.author = filterById($scope.authors, book.author.id);
     };
 
     $scope.remove = function (index, id) {
-		$scope.books.splice(index, 1);
-		Book.remove({bookId:id});
+        $scope.books.splice(index, 1);
+        Book.remove({bookId: id});
     };
 }]);
 
-controllers.controller('AuthorController', ['$scope', 'Author', function($scope, Author) {
+controllers.controller('AuthorController', ['$scope', 'Author', function ($scope, Author) {
     $scope.currentAuthor = new Author();
     $scope.authors = Author.query();
     $scope.showId = false;
@@ -58,17 +58,17 @@ controllers.controller('AuthorController', ['$scope', 'Author', function($scope,
     };
 
     $scope.edit = function (author) {
-    	$scope.currentAuthor = author;
+        $scope.currentAuthor = author;
     };
 
     $scope.remove = function (index, id) {
-		$scope.authors.splice(index, 1);
-		Author.remove({authorId:id});
+        $scope.authors.splice(index, 1);
+        Author.remove({authorId: id});
     };
 }]);
 
-controllers.controller('NavController', ['$scope', '$rootScope', '$route', function($scope, $rootScope, $route) {
-	$rootScope.route = $route;
+controllers.controller('NavController', ['$scope', '$rootScope', '$route', function ($scope, $rootScope, $route) {
+    $rootScope.route = $route;
 }]);
 
 controllers.controller('LanguageController', ['$scope','$translate','$location', function($scope, $translate, $location) {
