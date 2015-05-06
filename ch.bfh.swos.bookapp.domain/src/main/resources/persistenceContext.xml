@@ -12,7 +12,7 @@
     <!-- *** Datasource *** -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem:bookapp;DB_CLOSE_DELAY=-1"/>
+        <property name="url" value="jdbc:h2:~/bookappDB"/>
         <property name="username" value="bfh"/>
         <property name="password" value="bfh"/>
     </bean>
@@ -25,7 +25,7 @@
         <property name="jpaVendorAdapter">
             <bean
                     class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter">
-                <property name="database" value="MYSQL"/>
+                <property name="database" value="H2"/>
             </bean>
         </property>
         <property name="jpaProperties">
