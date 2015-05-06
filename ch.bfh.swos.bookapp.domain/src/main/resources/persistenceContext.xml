@@ -3,16 +3,18 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
 
     <jpa:repositories base-package="ch.bfh.swos.bookapp.repository"/>
 
     <!-- *** Datasource *** -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:~/bookappDB"/>
+        <property name="url" value="jdbc:h2:~/bookappDB;AUTO_SERVER=TRUE"/>
         <property name="username" value="bfh"/>
         <property name="password" value="bfh"/>
     </bean>
@@ -31,11 +33,15 @@
         <property name="jpaProperties">
             <props>
                 <prop key="eclipselink.weaving">static</prop>
-                <prop key="eclipselink.ddl-generation">create-tables</prop>
+                <prop key="eclipselink.ddl-generation">create-or-extend-tables</prop>
                 <prop key="eclipselink.ddl-generation.output-mode">database</prop>
             </props>
         </property>
     </bean>
+
+    <jdbc:initialize-database data-source="dataSource" enabled="true" ignore-failures="ALL">
+        <jdbc:script location="classpath:import.sql"/>
+    </jdbc:initialize-database>
 
     <!-- *** Transaction Manager *** -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
