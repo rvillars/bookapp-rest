@@ -1,6 +1,6 @@
 'use strict';
 
-var bookapp = angular.module('bookapp', ['controllers', 'services', 'ui.bootstrap']);
+var bookapp = angular.module('bookapp', ['books', 'authors', 'ui.bootstrap']);
 
 bookapp.config(function ($routeProvider) {
     $routeProvider.
@@ -9,3 +9,7 @@ bookapp.config(function ($routeProvider) {
         when('/authors', {templateUrl: 'pages/authors.html', activeMenu: 'authors'}).
         otherwise({redirectTo: '/'});
 });
+
+bookapp.controller('NavController', ['$scope', '$rootScope', '$route', function ($scope, $rootScope, $route) {
+    $rootScope.route = $route;
+}]);
